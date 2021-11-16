@@ -17,9 +17,11 @@ const Products = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Container>
-                <Typography variant="h4" component="div" sx={{ m:2}}>
+                <br/>
+                <Typography variant="h4" component="div" sx={{ mt:5}}>
                     Top {products.length} exiting products
                 </Typography>
+                <br/>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {products.map(product => <Product key={product._id} product={product}/>)}
                 </Grid>

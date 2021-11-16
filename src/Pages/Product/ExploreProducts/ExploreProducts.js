@@ -17,7 +17,7 @@ const ExploreProducts = () => {
     return (
         <div>
             <Header/>
-            <Box sx={{ flexGrow: 1, mt: 15 }}>
+            <Box sx={{ flexGrow: 1, my:2 }}>
                 <Container>
                     <Typography variant="h4" component="div" sx={{ mb:5}}>
                         Our {products.length} exiting products

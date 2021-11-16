@@ -35,6 +35,11 @@ import DashboardHome from './DashboardHome/DashboardHome';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AddProduct from '../Product/AddProduct/AddProduct';
 import ManageAllOrders from '../Orders/ManageAllOrders/ManageAllOrders';
+import ManageProducts from '../Orders/ManageProducts/ManageProducts';
+import Payment from '../Orders/Payment/Payment';
+import MyOrder from '../Orders/MyOrder/MyOrder';
+import Ratings from '../Orders/Ratings/Ratings';
+import NotAdminroute from '../Login/Adminroute/NotAdminroute';
 
 const drawerWidth = 200;
 
@@ -61,10 +66,11 @@ const history = useHistory();
       {checkAdmin && 
         <Box>
             <Link to={`${url}/manage-all-order`}><Button variant="contained">Manage All Order</Button></Link>
-            <Link to={`${url}/addProduct`}><Button variant="contained">Add Product</Button></Link>
-            <Link to={`${url}/makeAdmin`}><Button variant="contained">Make Admin</Button></Link>
             <Link to={`${url}/manage-products`}><Button variant="contained">
             Manage Products</Button></Link>
+            <Link to={`${url}/addProduct`}><Button variant="contained">Add Product</Button></Link>
+            <Link to={`${url}/makeAdmin`}><Button variant="contained">Make Admin</Button></Link>
+            
         </Box> 
       }
       {!checkAdmin && <Box>
@@ -155,7 +161,19 @@ const history = useHistory();
             <Adminroute path={`${path}/manage-all-order`}>
                 <ManageAllOrders></ManageAllOrders>
             </Adminroute>
-            manage-all-order
+             <Adminroute path={`${path}/manage-products`}>
+                <ManageProducts/>
+            </Adminroute>
+
+             <NotAdminroute path={`${path}/payment`}>
+                <Payment/>
+            </NotAdminroute>
+             <NotAdminroute path={`${path}/myorder`}>
+                <MyOrder/>
+            </NotAdminroute>
+             <NotAdminroute path={`${path}/review`}>
+                <Ratings/>
+            </NotAdminroute>
           </Switch>
       </Box>
     </Box>

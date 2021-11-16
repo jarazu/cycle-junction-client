@@ -70,15 +70,14 @@ const Header = (props) => {
     <div className={classes.root}>
       <HideOnScroll {...props}>
         {/* <BrowserRouter> */}
-          <AppBar>
+          <AppBar  style={{backgroundColor: '#fed000'}}>
             <Toolbar>
               <Typography
                 variant="h5"
                 component="p"
-                color="textSecondary"
                 className={classes.title}
               >
-                <Link to="/">
+                <Link to="/" sx={{color: 'white'}}>
                   Cycle Junction
                 </Link>
               </Typography>

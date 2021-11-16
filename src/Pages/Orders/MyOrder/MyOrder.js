@@ -10,27 +10,26 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { Tooltip } from '@mui/material';
+import useAuth from '../../../hooks/useAuth';
 
 
 const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
-
-const ManageAllOrders = () => {
+const MyOrder = () => {
     const [dense, setDense] = React.useState(false);
     const [secondary, setSecondary] = React.useState(false);
+    const {user} = useAuth();
 
     const [orders, setOrders] = useState([]);
 
       useEffect(()=>{
-      const url = `http://localhost:5000/order`
-      fetch(url)
-      .then(res => res.json())
-      .then(data => setOrders(data))
+        const email = user.email;
+        const url = `http://localhost:5000/order/${email}`
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setOrders(data))
     },[]);
 
     const deleteItem = (id) => {
@@ -47,26 +46,6 @@ const ManageAllOrders = () => {
             })
         }
     }
-
-    const approveItem = id => {
-        const confirmation = window.confirm('Do you want to approve this order!!')
-        if(confirmation){
-            fetch(`http://localhost:5000/order/${id}`,{
-                method:'PUT',
-                headers:{
-                    'content-type': 'application/json'
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                const tempAllOrder = [...orders];
-                const findUpdatedOrder = tempAllOrder.findIndex((obj => obj._id === id));
-                tempAllOrder[findUpdatedOrder].status = "Shipped"
-                setOrders(tempAllOrder);
-            })
-        }
-    }
-
     return (
       <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
         <Grid container spacing={2}>
@@ -80,15 +59,9 @@ const ManageAllOrders = () => {
                   orders.map(order =>
                     <ListItem
                       secondaryAction={
-                        <span>
                         <IconButton edge="end" aria-label="delete" disabled={order.status === "Shipped"}>
-                          <Tooltip  title="Delete"><DeleteIcon onClick={ () => deleteItem(order._id)} /></Tooltip>
+                          <DeleteIcon onClick={ () => deleteItem(order._id)} />
                         </IconButton>
-                        
-                        <IconButton edge="end" aria-label="ship"  disabled={order.status === "Shipped"}>
-                          <Tooltip title="Ship Order"><CheckCircleIcon onClick={ () => approveItem(order._id)} /></Tooltip>
-                        </IconButton>
-                        </span>
                       }
                     >
                       <ListItemAvatar>
@@ -99,7 +72,7 @@ const ManageAllOrders = () => {
                       </ListItemAvatar>
                       <ListItemText
                         primary={order.product.pname}
-                        secondary={`${order.name} $${order.product.price} (${order.status})`}
+                        secondary={`$${order.product.price} ${order.status}`}
                       />
                     </ListItem>,
                   )
@@ -110,6 +83,6 @@ const ManageAllOrders = () => {
         </Grid>
       </Box>
     );
-}
+};
 
-export default ManageAllOrders;
+export default MyOrder;

@@ -16,7 +16,7 @@ const Product = (props) => {
     }
     return (
         <Grid item xs={4} sm={4} md={4}>
-        <Card sx={{ minWidth: 275, border: 0, boxShadow: 0, minHeight:470 }}>
+        <Card sx={{ minWidth: 275, border: 0, boxShadow: 0, minHeight:400 }}>
             <CardMedia
                 component="img"
                 height="140"
@@ -24,7 +24,7 @@ const Product = (props) => {
                 image={imgurl}
                 alt="green iguana"
             />
-            <CardContent>
+            <CardContent className="card-cont">
                 <Typography variant="h5" component="div">
                 {pname}
                 </Typography>
@@ -34,16 +34,16 @@ const Product = (props) => {
                 <Typography variant="body2" color="text.secondary">
                 {description}
                 <br />
-                {'"a benevolent smile"'}
                 </Typography>
+                <br/>
                 <Link
-            to={{
-                pathname: `/buy-now/${_id}`,
-                state: {
-                detail: props.product,
-                },
-            }}
-        >
+                    to={{
+                        pathname: `/buy-now/${_id}`,
+                        state: {
+                        detail: props.product,
+                        },
+                    }}
+                >
                 <Button className="buy-btn" variant="contained" onClick={buyNow}><ShoppingCartIcon/>BuyNow</Button></Link>
             </CardContent>
         </Card>

@@ -1,0 +1,20 @@
+.footer-icon {
+  color: #2b2b2b;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-icon li {
+  float: left;
+  margin: 10px 5px 5px 5px;
+  border: 1px solid #2b2b2b;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer-area {
+  background-color: #fed000;
+  margin-top: 10px;
+}

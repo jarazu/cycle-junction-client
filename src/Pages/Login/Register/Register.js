@@ -36,9 +36,9 @@ const Register = () => {
 
     return (
         <Container>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{mt:5}}>
                 <Grid item xs={12} md={6}>
-                    <Typography sx={{mt:8}} variant="body1" gutterBottom>
+                    <Typography sx={{mt:1}} variant="body1" gutterBottom>
                         Register
                         {
                             !isLoading && <form action="" onSubmit={handleRegistrationSubmit}>
