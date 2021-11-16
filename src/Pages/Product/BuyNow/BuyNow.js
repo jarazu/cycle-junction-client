@@ -31,7 +31,7 @@ const BuyNow = () => {
         e.preventDefault();
         setProductSuccess('');
         const prdct = {...product}
-        fetch('http://localhost:5000/order', {
+        fetch('https://peaceful-temple-93209.herokuapp.com/order', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

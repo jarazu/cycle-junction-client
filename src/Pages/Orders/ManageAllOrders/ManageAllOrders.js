@@ -27,7 +27,7 @@ const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
 
       useEffect(()=>{
-      const url = `http://localhost:5000/order`
+      const url = `https://peaceful-temple-93209.herokuapp.com/order`
       fetch(url)
       .then(res => res.json())
       .then(data => setOrders(data))
@@ -37,7 +37,7 @@ const ManageAllOrders = () => {
       console.log('order id' ,id)
        const confirmation = window.confirm('Do you want to remove this order!!')
         if(confirmation){
-            fetch(`http://localhost:5000/order/${id}`,{
+            fetch(`https://peaceful-temple-93209.herokuapp.com/order/${id}`,{
                 method:'DELETE'
             })
             .then(res => res.json())
@@ -51,7 +51,7 @@ const ManageAllOrders = () => {
     const approveItem = id => {
         const confirmation = window.confirm('Do you want to approve this order!!')
         if(confirmation){
-            fetch(`http://localhost:5000/order/${id}`,{
+            fetch(`https://peaceful-temple-93209.herokuapp.com/order/${id}`,{
                 method:'PUT',
                 headers:{
                     'content-type': 'application/json'

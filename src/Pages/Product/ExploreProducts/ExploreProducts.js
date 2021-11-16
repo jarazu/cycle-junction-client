@@ -9,7 +9,7 @@ const ExploreProducts = () => {
     const [products, setProducts] = useState([]);
 
         useEffect(()=>{
-        const url = `http://localhost:5000/products/1000`
+        const url = `https://peaceful-temple-93209.herokuapp.com/products/1000`
         fetch(url)
         .then(res => res.json())
         .then(data => setProducts(data))

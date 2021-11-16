@@ -54,7 +54,7 @@ const UserFirebase = () =>{
     // save user after registration ***************************
     const saveuser = (email, name, posttype) => {
         const user = {email, displayName: name};
-        fetch('http://localhost:5000/users', {
+        fetch('https://peaceful-temple-93209.herokuapp.com/users', {
             method: posttype,
             headers: {
                 'content-type': 'application/json'
@@ -114,7 +114,7 @@ const UserFirebase = () =>{
 
     // check user is admin role *******************************************
     useEffect(() =>{
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://peaceful-temple-93209.herokuapp.com/users/${user.email}`)
         .then(res => res.json())
         .then(data => setCheckAdmin(data.admin))
     },[user.email]);

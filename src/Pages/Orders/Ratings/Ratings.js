@@ -19,7 +19,7 @@ const Ratings = ()=> {
         e.preventDefault();
         setReviewSuccess('');
         const rev = {...review, rating: value, details: details}
-        fetch('http://localhost:5000/review', {
+        fetch('https://peaceful-temple-93209.herokuapp.com/review', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

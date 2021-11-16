@@ -12,7 +12,7 @@ const AddProduct = () => {
         setProductSuccess('');
         console.log(e)
         const prdct = {...product}
-        fetch('http://localhost:5000/products', {
+        fetch('https://peaceful-temple-93209.herokuapp.com/products', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

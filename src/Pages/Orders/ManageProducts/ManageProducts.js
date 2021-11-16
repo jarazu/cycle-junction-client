@@ -25,7 +25,7 @@ const ManageProducts = () => {
     const [orders, setOrders] = useState([]);
 
       useEffect(()=>{
-      const url = `http://localhost:5000/order`
+      const url = `https://peaceful-temple-93209.herokuapp.com/order`
       fetch(url)
       .then(res => res.json())
       .then(data => setOrders(data))
@@ -35,7 +35,7 @@ const ManageProducts = () => {
       console.log('order id' ,id)
        const confirmation = window.confirm('Do you want to remove this order!!')
         if(confirmation){
-            fetch(`http://localhost:5000/order/${id}`,{
+            fetch(`https://peaceful-temple-93209.herokuapp.com/order/${id}`,{
                 method:'DELETE'
             })
             .then(res => res.json())

@@ -11,7 +11,7 @@ const MakeAdmin = () => {
     const user = {email};
     const handleAdminSubmit = e => {
         e.preventDefault();
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://peaceful-temple-93209.herokuapp.com/users/admin', {
             method: 'put',
             headers: {
                 'authorization':`Bearer ${token}`,

@@ -26,7 +26,7 @@ const MyOrder = () => {
 
       useEffect(()=>{
         const email = user.email;
-        const url = `http://localhost:5000/order/${email}`
+        const url = `https://peaceful-temple-93209.herokuapp.com/order/${email}`
         fetch(url)
         .then(res => res.json())
         .then(data => setOrders(data))
@@ -36,7 +36,7 @@ const MyOrder = () => {
       console.log('order id' ,id)
        const confirmation = window.confirm('Do you want to remove this order!!')
         if(confirmation){
-            fetch(`http://localhost:5000/order/${id}`,{
+            fetch(`https://peaceful-temple-93209.herokuapp.com/order/${id}`,{
                 method:'DELETE'
             })
             .then(res => res.json())

@@ -8,7 +8,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
 
         useEffect(()=>{
-        const url = `http://localhost:5000/products/6`
+        const url = `https://peaceful-temple-93209.herokuapp.com/products/6`
         fetch(url)
         .then(res => res.json())
         .then(data => setProducts(data))
