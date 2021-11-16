@@ -1,19 +1,20 @@
-import { Button, CircularProgress, Container, Grid, Snackbar, TextField, Typography } from '@mui/material';
+import { Button, CircularProgress, Container, Grid, Alert, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
-import MuiAlert from '@mui/material/Alert';
-const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
+// import MuiAlert from '@mui/material/Alert';
+import useAuth from '../../../hooks/useAuth';
+// const Alert = React.forwardRef(function Alert(props, ref) {
+//     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+//   });
 
 const Register = () => {
-    // const {registerUser, isLoading, user} = useAuth();
+    const {registerUser, isLoading, user, authError} = useAuth();
     const [registerData, setRegister] = useState({});
     const [open, setOpen] = React.useState(false);
     const [severity, setSeverity] = useState('');
     const [responseMessage, setResponseMessage] = useState('');
-    const isLoading = false
+    const history = useHistory();
 
     const handleRegistrationSubmit = e => {
         e.preventDefault();
@@ -23,7 +24,7 @@ const Register = () => {
             setResponseMessage('Email not matched');
             return;
         }
-        // registerUser(registerData.email, registerData.password, registerData.name, history);
+        registerUser(registerData.email, registerData.password, registerData.name, history);
     }
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -57,15 +58,16 @@ const Register = () => {
                                 </NavLink>
                             </form> 
                         }
-                        {
-                            isLoading && <CircularProgress />
+                        {isLoading && <CircularProgress />
                         }
+                        {user?.email && 
+                            <Alert severity="success">Congratulations !!! Registratoion successfull</Alert>
+                        }
+                        {authError && 
+                            <Alert  severity="error">{authError}</Alert>
+                        }
+                        
                     </Typography>
-                    {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                        <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
-                        {responseMessage}
-                        </Alert>
-                    </Snackbar> */}
                 </Grid>
                 <Grid item  xs={12} md={6}>
                     <img src='https://image.freepik.com/free-photo/cyclist-sunny-day-bike-adventure-travel-photo_1150-7513.jpg' alt="" style={{width:'100%'}}/>
