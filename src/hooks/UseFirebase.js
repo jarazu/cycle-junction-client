@@ -3,7 +3,7 @@ import InitializeFireBase from "../Pages/Login/Firebase/firebase.init";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile,getIdToken } from "firebase/auth";
 import { Redirect } from "react-router";
 
-// initialize firebase
+// initialize firebase .
 InitializeFireBase();
 
 const UserFirebase = () =>{
